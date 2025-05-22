@@ -30,22 +30,20 @@ const schema = a.schema({
 
   chat: a.conversation({
     aiModel: a.ai.model("Claude 3.5 Sonnet"),
-    systemPrompt: `
-    You are a helpful assistant.
-    `,
+    systemPrompt: "You are a helpful assistant.",
     tools: [
       {
+        name: "getWeather",
         query: a.ref("getWeather"),
         description: "Provides the current weather for a given city.",
       },
     ],
-  })
-  .authorization((allow) => allow.owner()),
+  }).authorization((allow) => allow.owner()),
 
   chatNamer: a
     .generation({
       aiModel: a.ai.model("Claude 3 Haiku"),
-      systemPrompt: `You are a helpful assistant that writes descriptive names for conversations. Names should be 2-10 words long`,
+      systemPrompt: "You are a helpful assistant that writes descriptive names for conversations. Names should be 2-10 words long",
     })
     .arguments({
       content: a.string(),
