@@ -55,7 +55,7 @@ const schema = a.schema({
         name: a.string(),
       })
     )
-    .authorization((allow) => [allow.authenticated()]),
+    .authorization((allow) => allow.authenticated()),
 
   generateRecipe: a
     .generation({
