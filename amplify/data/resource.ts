@@ -39,7 +39,8 @@ const schema = a.schema({
         description: "Provides the current weather for a given city.",
       },
     ],
-  }),
+  })
+  .authorization((allow) => allow.owner()),
 
   chatNamer: a
     .generation({
